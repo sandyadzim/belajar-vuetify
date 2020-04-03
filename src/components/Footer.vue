@@ -10,12 +10,12 @@
       class="flex"
       flat
       tile
-      color="red"
+      color="teal lighten-3"
       :elevation="10"
     >
 
       <v-card-text class="py-2 white--text text-center">
-        {{ new Date().getFullYear() }} — <strong>AAE IdeaPro</strong>
+        {{ new Date().getFullYear() }} — <strong>Admin Dashboard</strong>
       </v-card-text>
     </v-card>
   </v-footer>
