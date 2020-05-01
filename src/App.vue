@@ -5,5 +5,6 @@
     </v-content>
      <Footer/>
   </v-app>
- 
 </template>
+<style scoped>
+</style>

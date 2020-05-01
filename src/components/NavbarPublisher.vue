@@ -3,7 +3,7 @@
        <v-app-bar  color="indigo" dark app >
            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
            <v-toolbar-title class="text-uppercase ">
-               <span class="font-weight-light">TRY OUT</span>
+               <span class="font-weight-light">TRY OUT || PUBLISHER</span>
                <span> Dashboard</span>
            </v-toolbar-title>
            <v-spacer></v-spacer>
@@ -21,7 +21,7 @@
                </v-flex>
           </v-layout>
           <v-list flat>
-            <v-list-item router to="/dashboard" active-class="border" class="border-aktif">
+            <v-list-item router to="/p/dashboard" active-class="border" class="border-aktif">
               <v-list-item-action>
                 <v-icon>dashboard</v-icon>
               </v-list-item-action>
@@ -30,7 +30,7 @@
               </v-list-item-content>
             </v-list-item>
             <h5 class="mt-2 ml-3">Main Menu</h5>
-            <v-list-item router to="/bank-soal" active-class="border" class="border-aktif">
+            <v-list-item router to="/p/bank-soals" active-class="border" class="border-aktif">
               <v-list-item-action>
                 <v-icon>account_balance</v-icon>
               </v-list-item-action>
@@ -72,40 +72,14 @@
                   </v-list-item-content>
                 </v-list-item>
               </v-list-group>
-              <v-list-item router to="/campaign" active-class="border" class="border-aktif">
-              <v-list-item-action>
-                <v-icon>speaker_notes</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Campaign</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-group
-                prepend-icon="insert_chart"
-                no-action
-                active-class="border"
-                color="white"
-              >
-                <template v-slot:activator>
-                  <v-list-item-content>
-                    <v-list-item-title>Report</v-list-item-title>
-                  </v-list-item-content>
-                </template>
-                <v-list-item  v-for="reports in report" :key="reports.title" router :to="reports.route" active-class="sub-border" class="sub-list">
-                  <v-list-item-content>
-                    <v-list-item-title>{{ reports.title }}</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list-group>
-              <h5 class="mt-2 ml-3">Publisher</h5>
-              <v-list-item router to="/publisher" active-class="border" class="border-aktif">
-              <v-list-item-action>
-                <v-icon>book</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Publishers</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
+              <v-list-item router to="/p/module" active-class="border" class="border-aktif">
+                <v-list-item-action>
+                    <v-icon>speaker_notes</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                    <v-list-item-title>Module</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
             <h5 class="mt-2 ml-3">Monitoring</h5>
             <v-list-item v-for="monitorings in monitoring" :key="monitorings.text" router :to="monitorings.route" active-class="border" class="border-aktif">
               <v-list-item-action>
@@ -133,26 +107,25 @@ export default {
    data: () => ({
       drawer: true,
       monitoring :[
-          {icon: 'queue_play_next', text:'Live Ujian', route: '/live-ujian'},
-          {icon: 'remove_from_queue', text:'Live Quiz', route: '/live-quiz'}
+          {icon: 'queue_play_next', text:'Live Ujian', route: '/p/live-ujian'},
+          {icon: 'remove_from_queue', text:'Live Quiz', route: '/p/live-quiz'}
       ],
       analytic :[
-          {icon: 'star', text:'Skor', route: '/score-peserta'},
-          {icon: 'bar_chart', text:'Soal', route: '/soal-analytic'}
+          {icon: 'star', text: 'Skor', route: '/p/skor'},
+          {icon: 'bar_chart', text: 'Soal', route: '/p/soal-analytic'},
+          {icon: 'star', text: 'Report', route: '/p/report'}
       ],
       ujian: [
-        {title: 'Kategori', route: '/kategori-ujian'},
-        {title: 'Buat Ujian', route: '/buat-ujian'},
-        {title: 'List Ujian', route: '/list-ujian'}
+        {title: 'Buat Ujian', route: '/p/ujian/buat-ujian'},
+        {title: 'Daftar Ujian', route: '/p/ujian'}
       ],
       quiz: [
-        {title: 'Kategori', route: '/kategori-quiz'},
-        {title: 'Buat Quiz', route: '/buat-quiz'},
-        {title: 'List Quiz', route: '/list-quiz'}
+        {title: 'Buat Quiz', route: '/p/quiz/buat-quiz'},
+        {title: 'Daftar Quiz', route: '/p/quiz'}
       ],
       report: [
-        {title: 'Ujian', route: '/report-ujian'},
-        {title: 'Quiz', route: '/report-quiz'}
+        {title: 'Ujian', route: '/p/report'},
+        {title: 'Quiz', route: '/p/report-quiz'}
       ]
     }),
     components: {
