@@ -1,42 +1,42 @@
 <template>
-  <v-app v-if="user === 'EDUTORE'" class="test">
+  <v-app class="test">
     <Navbar/>
       <router-view></router-view>
      <Footer/>
   </v-app>
-  <v-app v-else>
+  <!-- <v-app v-else>
     <NavbarPublisher/>
       <router-view></router-view>
     <Footer/>
-  </v-app>
+  </v-app> -->
 </template>
 
 <script>
 
 import Navbar from '@/components/Navbar'
-import NavbarPublisher from '@/components/NavbarPublisher'
+// import NavbarPublisher from '@/components/NavbarPublisher'
 import Footer from '@/components/Footer'
 export default {
   name: 'Full',
 
   components: {
    Navbar,
-   Footer,
-   NavbarPublisher
+   Footer
+  //  NavbarPublisher
   },
 
   data: () => ({
     user: ''
   }),
   mounted () {
-    const auth = sessionStorage.getItem('authorized')
-    if (auth === 'EDUTORE') {
-      this.user = 'EDUTORE'
-    } else if (auth === 'PARTNER') {
-      this.user = 'PARTNER'
-    } else {
-      this.user = ''
-    }
+    // const auth = sessionStorage.getItem('authorized')
+    // if (auth === 'EDUTORE') {
+    //   this.user = 'EDUTORE'
+    // } else if (auth === 'PARTNER') {
+    //   this.user = 'PARTNER'
+    // } else {
+    //   this.user = ''
+    // }
   }
 };
 </script>

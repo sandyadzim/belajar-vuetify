@@ -18,7 +18,8 @@ Vue.use({
     install(Vue) {
         Vue.prototype.$axios = axios.create({
             // baseURL: "http://localhost:3000/api-admin/v1/"
-                baseURL: 'https://api-tryout.edutore.net/api-admin/v1/'
+            // baseURL: 'https://api-tryout.edutore.net/api-admin/v1/'
+            baseURL: 'https://skyroom-api.herokuapp.com/api/v2/'
         })
     }
 })

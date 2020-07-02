@@ -34,9 +34,9 @@
                                             <v-card-text class="mt-5">
                                                 <!-- <h1 class="text-center display-2 teal--text text--accent-3 mb-5">Sign in to Dashboard</h1> -->
                                                 <div cols="12" class="text-center">
-                                                    <img src="https://storage.googleapis.com/edutore-cdn/edutpre.png" alt="anti-stress" style="width: 125px" class="text-center">
+                                                    <img src="../../../public/sky-logo.png" alt="anti-stress" style="width: 170px" class="text-center">
                                                 </div>
-                                                <h4 class="text-center mt-4 indigo--text">Login with Your Account</h4>
+                                                <h4 class="text-center mt-4 red--text">Login with Your Account</h4>
                                                 <v-col cols="10" offset="1" class="text-center">
                                                     <v-form v-on:submit.prevent="_actionLogin">
                                                         <v-text-field
@@ -44,7 +44,7 @@
                                                             label="Username"
                                                             prepend-icon="email"
                                                             type="text"
-                                                            color="blue accent-3"
+                                                            color="red accent-3"
                                                             required
                                                         />
                                                         <v-text-field
@@ -54,10 +54,10 @@
                                                             name="password"
                                                             prepend-icon="lock"
                                                             type="password"
-                                                            color="blue accent-3"
+                                                            color="red accent-3"
                                                         />
                                                         <div class="text-center mt-3">
-                                                            <v-btn rounded color="blue darken-5" dark type="submit">Sign In</v-btn>
+                                                            <v-btn rounded color="red darken-5" dark type="submit">Sign In</v-btn>
                                                         </div>
                                                     </v-form>
                                                 </v-col>
@@ -88,58 +88,61 @@ export default {
     },
     methods: {
         _actionLogin() {
-            let data = this.form
-            this.$axios.post('login', data)
-            .then(response => {
-                if (response.data.success == 'true') {
-                    // eslint-disable-next-line no-console
-                    console.log(response.data.data)
-                    sessionStorage.setItem('username', response.data.data.username)
-                    sessionStorage.setItem('session_token', response.data.data.token)
-                    sessionStorage.setItem('authorized', response.data.data.authorized)
-                    sessionStorage.setItem('_id', response.data.data.id)
-                    const authName = sessionStorage.getItem('authorized')
-                    if (authName === 'EDUTORE') {
-                        this.dialog = true
-                        setTimeout(() => {
-                            this.$router.push({ path: '/' })
-                        }, 3000)
-                    } else if (authName === 'PARTNER') {
-                        this.dialog = true
-                        setTimeout(() => {
-                            this.$router.push({ path: '/p' })
-                        }, 3000)
-                    } else {
-                        this.router.push({ path: '/login'})
-                    }
-                } else if (response.data.message == 'Password invalid') {
-                    this.error_text = response.data.message
-                    this.showAlert = true
-                    setTimeout(() => {
-                        this.showAlert = false
-                    }, 3000)
-                }
-            })
-            .catch(err => {
-                if (err.response.data.message == 'User Not Found') {
-                    this.error_text = err.response.data.message
-                    this.showAlert = true
-                    setTimeout(() => {
-                        this.showAlert = false
-                    }, 5000)
-                }
-            })
+            this.$router.push({ path: '/admin/dashboard'})
         }
+        // _actionLogin() {
+        //     let data = this.form
+        //     this.$axios.post('login', data)
+        //     .then(response => {
+        //         if (response.data.success == 'true') {
+        //             // eslint-disable-next-line no-console
+        //             console.log(response.data.data)
+        //             sessionStorage.setItem('username', response.data.data.username)
+        //             sessionStorage.setItem('session_token', response.data.data.token)
+        //             sessionStorage.setItem('authorized', response.data.data.authorized)
+        //             sessionStorage.setItem('_id', response.data.data.id)
+        //             const authName = sessionStorage.getItem('authorized')
+        //             if (authName === 'EDUTORE') {
+        //                 this.dialog = true
+        //                 setTimeout(() => {
+        //                     this.$router.push({ path: '/' })
+        //                 }, 3000)
+        //             } else if (authName === 'PARTNER') {
+        //                 this.dialog = true
+        //                 setTimeout(() => {
+        //                     this.$router.push({ path: '/p' })
+        //                 }, 3000)
+        //             } else {
+        //                 this.router.push({ path: '/login'})
+        //             }
+        //         } else if (response.data.message == 'Password invalid') {
+        //             this.error_text = response.data.message
+        //             this.showAlert = true
+        //             setTimeout(() => {
+        //                 this.showAlert = false
+        //             }, 3000)
+        //         }
+        //     })
+        //     .catch(err => {
+        //         if (err.response.data.message == 'User Not Found') {
+        //             this.error_text = err.response.data.message
+        //             this.showAlert = true
+        //             setTimeout(() => {
+        //                 this.showAlert = false
+        //             }, 5000)
+        //         }
+        //     })
+        // }
     }
 }
 </script>
 
 <style scoped>
 .imgy {
-    background-image: url('/edu-owl.png');
+    background-image: url('/sky.png');
     /* background-size: cover; */
-    background-size: 500px;
-    background-position-y: 180px;
+    background-size: 305px;
+    background-position-y: 240px;
     background-repeat: repeat-x;
 }
 </style>
